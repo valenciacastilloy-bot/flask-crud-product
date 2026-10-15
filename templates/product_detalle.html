@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Producto</title>
+</head>
+<body>
+    <h1>Detalle del Producto</h1>
+    <p><strong>ID:</strong> {{ product.id }}</p>
+    <p><strong>Nombre:</strong> {{ product.name }}</p>
+    <p><strong>Precio:</strong> ${{ product.price }}</p>
+    <p><strong>Stock:</strong> {{ product.stock }}</p>
+    <br>
+    <a href="{{ url_for('listar_products') }}">Volver al inicio</a>
+</body>
+</html>

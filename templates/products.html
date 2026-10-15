@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos - Tarea Emergentes</title>
+</head>
+<body>
+    <h1>Lista de Productos (SQLAlchemy)</h1>
+    <a href="{{ url_for('nuevo_product') }}">➕ Crear Nuevo Producto</a>
+    <br><br>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+        </tr>
+        {% for p in products %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>${{ p.price }}</td>
+            <td>{{ p.stock }}</td>
+            <td>
+                <a href="{{ url_for('detalle_product', id=p.id) }}">Ver</a> |
+                <a href="{{ url_for('editar_product', id=p.id) }}">Editar</a> |
+                <form action="{{ url_for('eliminar_product', id=p.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" onclick="return confirm('¿Seguro que deseas eliminar?')">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No hay productos registrados.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
